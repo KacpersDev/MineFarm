@@ -17,5 +17,4 @@ public class Main {
     static void main() {
         mineUI.create();
     }
-
 }
