@@ -14,6 +14,7 @@ public class Player {
 
     private int health;
     private int foodLevel;
+    private int sleepLevel;
 
     private int animTick = 0;
 
