@@ -1,10 +1,9 @@
 package me.kacperm;
 
 import me.kacperm.state.GameStorage;
-import me.kacperm.ui.MineUI;
-import me.kacperm.ui.renderer.MineRenderer;
+import me.kacperm.screen.MineScreen;
+import me.kacperm.screen.renderer.MineRenderer;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
     private static final int MIN_WIDTH = 1920, MIN_HEIGHT = 1080;
     private static final int STARTING_WIDTH = 1920, STARTING_HEIGHT = 1080;
 
-    private final MineUI mineUI = new MineUI(this, TITLE, new Dimension(STARTING_WIDTH, STARTING_HEIGHT),
+    private final MineScreen mineUI = new MineScreen(this, TITLE, new Dimension(STARTING_WIDTH, STARTING_HEIGHT),
             new Dimension(MIN_WIDTH, MIN_HEIGHT));
 
     private final MineRenderer mineRenderer = new MineRenderer();
@@ -30,5 +29,13 @@ public class Main {
 
     public GameStorage getGameStorage() {
         return gameStorage;
+    }
+
+    public static int getMinHeight() {
+        return MIN_HEIGHT;
+    }
+
+    public static int getMinWidth() {
+        return MIN_WIDTH;
     }
 }

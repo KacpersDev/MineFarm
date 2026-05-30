@@ -1,20 +1,19 @@
-package me.kacperm.ui;
+package me.kacperm.screen;
 
 import me.kacperm.Main;
-import me.kacperm.ui.screen.Screen;
+import me.kacperm.screen.screen.GameScreen;
 
 import javax.swing.*;
 import java.awt.*;
 
-public record MineUI(Main main, String title, Dimension startingDimension, Dimension minDimension) {
+public record MineScreen(Main main, String title, Dimension startingDimension, Dimension minDimension) {
 
     public void create() {
         JFrame frame = new JFrame(title);
-        frame.setMinimumSize(minDimension);
-        frame.setSize(startingDimension);
         frame.setLocation(calculateMiddle(Toolkit.getDefaultToolkit().getScreenSize()));
+        frame.setSize(new Dimension(startingDimension));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setContentPane(new Screen(main));
+        frame.setContentPane(new GameScreen(main));
         frame.setVisible(true);
     }
 

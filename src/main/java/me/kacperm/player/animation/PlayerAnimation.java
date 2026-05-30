@@ -2,8 +2,7 @@ package me.kacperm.player.animation;
 
 import me.kacperm.Main;
 import me.kacperm.player.Player;
-import me.kacperm.player.location.Direction;
-import me.kacperm.ui.renderer.asset.AssetType;
+import me.kacperm.screen.renderer.asset.AssetType;
 
 import java.awt.*;
 
@@ -14,8 +13,7 @@ public class PlayerAnimation {
 
     private Image currentImage;
 
-    private final Image frontPlayer;
-    private final Image sidePlayer;
+    private final Image frontPlayer, sidePlayer, backPlayer, westSidePlayer;
 
     private int sx1 = 0, sy1 = 0, sx2 = 50, sy2 = 50;
 
@@ -25,6 +23,8 @@ public class PlayerAnimation {
 
         this.frontPlayer = main.getMineRenderer().render(AssetType.PLAYER_FRONT);
         this.sidePlayer = main.getMineRenderer().render(AssetType.PLAYER_SIDE);
+        this.backPlayer = main.getMineRenderer().render(AssetType.PLAYER_BACK);
+        this.westSidePlayer = main.getMineRenderer().render(AssetType.WEST_SIDE_PLAYER);
 
         this.currentImage = frontPlayer;
     }
@@ -52,6 +52,27 @@ public class PlayerAnimation {
                 sy1 = 50;
                 sx2 = sx1 + 50;
                 sy2 = sy1 + 45;
+            }
+            case SOUTH -> {
+                currentImage = frontPlayer;
+
+                int frame = player.getAnimTick() / 8;
+
+                sx1 = frame * 50;
+                sy1 = 50;
+                sx2 = sx1 + 50;
+                sy2 = sy1 + 45;
+            } case NORTH -> {
+                currentImage = backPlayer;
+
+                int frame = player.getAnimTick() / 8;
+
+                sx1 = frame * 50;
+                sy1 = 50;
+                sx2 = sx1 + 50;
+                sy2 = sy1 + 45;
+            } case WEST -> {
+                // TODO...
             }
         }
     }

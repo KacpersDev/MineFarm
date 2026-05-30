@@ -10,7 +10,7 @@ public class Location {
         this.world = world;
         this.x = x;
         this.y = y;
-        this.direction = Direction.SOUTH;
+        this.direction = null;
     }
 
     public int getX() {

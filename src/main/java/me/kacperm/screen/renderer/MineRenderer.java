@@ -1,8 +1,8 @@
-package me.kacperm.ui.renderer;
+package me.kacperm.screen.renderer;
 
 import me.kacperm.assets.AssetValues;
 import me.kacperm.player.Player;
-import me.kacperm.ui.renderer.asset.AssetType;
+import me.kacperm.screen.renderer.asset.AssetType;
 
 import javax.swing.*;
 import java.awt.*;
