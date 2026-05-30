@@ -42,15 +42,17 @@ public class PlayerAnimation {
             return;
         }
 
-        if (player.getLocation().getDirection().equals(Direction.EAST)) {
-            currentImage = sidePlayer;
+        switch (player.getLocation().getDirection()) {
+            case EAST -> {
+                currentImage = sidePlayer;
 
-            int frame = player.getAnimTick() / 8;
+                int frame = player.getAnimTick() / 8;
 
-            sx1 = frame * 50;
-            sy1 = 50;
-            sx2 = sx1 + 50;
-            sy2 = sy1 + 45;
+                sx1 = frame * 50;
+                sy1 = 50;
+                sx2 = sx1 + 50;
+                sy2 = sy1 + 45;
+            }
         }
     }
 
