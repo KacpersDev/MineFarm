@@ -4,9 +4,13 @@ import me.kacperm.Main;
 import me.kacperm.assets.AssetValues;
 import me.kacperm.player.Player;
 import me.kacperm.player.location.Direction;
+import me.kacperm.player.location.Location;
+import me.kacperm.region.Region;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -29,6 +33,20 @@ public class GameScreen extends JPanel implements KeyListener {
 
         SwingUtilities.invokeLater(this::requestFocusInWindow);
 
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                Component component = e.getComponent();
+                player.setScreenWidth((int) component.getSize().getWidth());
+                player.setScreenHeight((int) component.getSize().getHeight());
+
+                Location playerLocation = player.getLocation();
+                if (playerLocation.getX() > player.getScreenWidth() - 100) {
+                    playerLocation.setX(player.getScreenWidth() - 100);
+                }
+            }
+        });
+
         Timer timer = new Timer(16, e -> {
             update();
             repaint();
@@ -46,6 +64,12 @@ public class GameScreen extends JPanel implements KeyListener {
         super.paintComponent(g);
 
         main.getMineRenderer().renderPlayer(player, g);
+
+        Region region = main.getRegionManager().getRegionByPlayer(player);
+
+        if (player.isCorner()) {
+            main.getMineRenderer().renderPlayerCorner(player, g);
+        }
     }
 
     @Override
@@ -55,6 +79,7 @@ public class GameScreen extends JPanel implements KeyListener {
             case KeyEvent.VK_D -> player.move(AssetValues.PLAYER_SPEED,0, Direction.EAST);
             case KeyEvent.VK_S -> player.move(0, AssetValues.PLAYER_SPEED, Direction.SOUTH);
             case KeyEvent.VK_A -> player.move(-AssetValues.PLAYER_SPEED, 0, Direction.WEST);
+            case KeyEvent.VK_P -> player.setCorner(!player.isCorner());
         }
     }
 

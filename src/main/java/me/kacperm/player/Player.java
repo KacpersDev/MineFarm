@@ -4,9 +4,11 @@ import me.kacperm.Main;
 import me.kacperm.player.animation.PlayerAnimation;
 import me.kacperm.player.location.Direction;
 import me.kacperm.player.location.Location;
+import me.kacperm.region.Region;
 
 public class Player {
 
+    private final Main main;
     private final String name;
     private final Location location;
 
@@ -21,7 +23,10 @@ public class Player {
     private int screenWidth;
     private int screenHeight;
 
+    private boolean corner = true;
+
     public Player(Main main, String name) {
+        this.main = main;
         this.name = name;
         this.location = new Location("world", 0,0);
 
@@ -130,5 +135,17 @@ public class Player {
 
     public void setScreenWidth(int screenWidth) {
         this.screenWidth = screenWidth;
+    }
+
+    public Region getCurrentRegion() {
+        return main.getRegionManager().getRegionByPlayer(this);
+    }
+
+    public void setCorner(boolean corner) {
+        this.corner = corner;
+    }
+
+    public boolean isCorner() {
+        return corner;
     }
 }

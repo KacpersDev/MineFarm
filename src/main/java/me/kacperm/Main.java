@@ -1,5 +1,7 @@
 package me.kacperm;
 
+import me.kacperm.mongo.MongoManager;
+import me.kacperm.region.manager.RegionManager;
 import me.kacperm.state.GameStorage;
 import me.kacperm.screen.MineScreen;
 import me.kacperm.screen.renderer.MineRenderer;
@@ -12,9 +14,10 @@ public class Main {
     private static final int MIN_WIDTH = 1920, MIN_HEIGHT = 1080;
     private static final int STARTING_WIDTH = 1920, STARTING_HEIGHT = 1080;
 
-    private final MineScreen mineUI = new MineScreen(this, TITLE, new Dimension(STARTING_WIDTH, STARTING_HEIGHT),
-            new Dimension(MIN_WIDTH, MIN_HEIGHT));
+    private final MineScreen mineUI = new MineScreen(this, TITLE, new Dimension(STARTING_WIDTH, STARTING_HEIGHT), new Dimension(MIN_WIDTH, MIN_HEIGHT));
 
+    //private final MongoManager mongoManager = new MongoManager();
+    private final RegionManager regionManager = new RegionManager();
     private final MineRenderer mineRenderer = new MineRenderer();
     private final GameStorage gameStorage = new GameStorage(this, "KacperM");
 
@@ -37,5 +40,9 @@ public class Main {
 
     public static int getMinWidth() {
         return MIN_WIDTH;
+    }
+
+    public RegionManager getRegionManager() {
+        return regionManager;
     }
 }

@@ -11,6 +11,7 @@ public class Profile {
     private final UUID uuid;
     private final String username;
     private final String password;
+
     private final Map<Control, Integer> controls = new HashMap<>();
 
     public Profile(UUID uuid, String username, String password) {
