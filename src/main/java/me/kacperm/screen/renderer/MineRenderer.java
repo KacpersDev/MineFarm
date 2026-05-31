@@ -14,6 +14,10 @@ public class MineRenderer {
         return new ImageIcon(getClass().getResource(type.getPath())).getImage();
     }
 
+    public void renderScreenImage(Graphics g, Image image, int x, int y) {
+        g.drawImage(image, x, y, null);
+    }
+
     public void renderPlayer(Player player, Graphics g) {
         g.drawImage(player.getPlayerAnimation().getCurrentImage(), player.getLocation().getX(), player.getLocation().getY(),
                 player.getLocation().getX() + AssetValues.PLAYER_CHARACTER[0], player.getLocation().getY() + AssetValues.PLAYER_CHARACTER[1],

@@ -6,6 +6,7 @@ import me.kacperm.player.Player;
 import me.kacperm.player.location.Direction;
 import me.kacperm.player.location.Location;
 import me.kacperm.region.Region;
+import me.kacperm.screen.renderer.asset.AssetType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,8 @@ public class GameScreen extends JPanel implements KeyListener {
     public GameScreen(Main main) {
         this.main = main;
 
-        setBackground(Color.BLACK);
+
+
         setFocusable(true);
         addKeyListener(this);
         setLayout(null);
@@ -62,6 +64,14 @@ public class GameScreen extends JPanel implements KeyListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        int x = 0;
+        for (int i = -50; i < 40; i++) {
+            for (int y = -10; y < 25; y++) {
+                main.getMineRenderer().renderScreenImage(g, main.getMineRenderer().render(AssetType.GRASS), x, y * 50);
+            }
+            x += 105;
+        }
 
         main.getMineRenderer().renderPlayer(player, g);
 
