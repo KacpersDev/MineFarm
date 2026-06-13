@@ -1,12 +1,14 @@
 package me.kacperm.player.location;
 
+import me.kacperm.world.World;
+
 public class Location {
 
-    private String world;
+    private World world;
     private int x, y;
     private Direction direction;
 
-    public Location(String world, int x, int y) {
+    public Location(World world, int x, int y) {
         this.world = world;
         this.x = x;
         this.y = y;
@@ -21,11 +23,11 @@ public class Location {
         return y;
     }
 
-    public String getWorld() {
+    public World getWorld() {
         return world;
     }
 
-    public void setWorld(String world) {
+    public void setWorld(World world) {
         this.world = world;
     }
 

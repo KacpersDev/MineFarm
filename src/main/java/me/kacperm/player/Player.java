@@ -28,7 +28,7 @@ public class Player {
     public Player(Main main, String name) {
         this.main = main;
         this.name = name;
-        this.location = new Location("world", 0,0);
+        this.location = new Location(main.getWorldManager().getDefault(), 0,0);
 
         this.health = 20;
         this.foodLevel = 20;

@@ -34,8 +34,9 @@ public class MineRenderer {
         int rightCornerX = player.getScreenWidth() - 120;
         int rightCornerY = 20;
 
-        g.drawString("Location: " + player.getLocation().getX() + ", " + player.getLocation().getY(), rightCornerX, rightCornerY);
-        g.drawString("Region: " + regionName, rightCornerX, rightCornerY + 20);
-        g.drawString("Hide with (P)", rightCornerX, rightCornerY + 40);
+        g.drawString("World: " + player.getLocation().getWorld().name(), rightCornerX, rightCornerY);
+        g.drawString("Location: " + player.getLocation().getX() + ", " + player.getLocation().getY(), rightCornerX, rightCornerY + 20);
+        g.drawString("Region: " + regionName, rightCornerX, rightCornerY + 40);
+        g.drawString("Hide with (P)", rightCornerX, rightCornerY + 60);
     }
 }
