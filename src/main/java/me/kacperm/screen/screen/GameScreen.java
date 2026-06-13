@@ -23,8 +23,6 @@ public class GameScreen extends JPanel implements KeyListener {
     public GameScreen(Main main) {
         this.main = main;
 
-
-
         setFocusable(true);
         addKeyListener(this);
         setLayout(null);

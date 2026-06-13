@@ -5,6 +5,8 @@ import me.kacperm.screen.screen.GameScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public record MineScreen(Main main, String title, Dimension startingDimension, Dimension minDimension) {
 
@@ -15,6 +17,13 @@ public record MineScreen(Main main, String title, Dimension startingDimension, D
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setContentPane(new GameScreen(main));
         frame.setVisible(true);
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                main.getSqLiteManager().createPlayerLocation(main.getGameStorage().getPlayer());
+            } 
+        });
     }
 
     private Point calculateMiddle(Dimension playerWindow) {

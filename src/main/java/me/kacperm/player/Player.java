@@ -10,7 +10,8 @@ public class Player {
 
     private final Main main;
     private final String name;
-    private final Location location;
+
+    private Location location;
 
     private final PlayerAnimation playerAnimation;
 
@@ -131,6 +132,10 @@ public class Player {
 
     public void setScreenHeight(int screenHeight) {
         this.screenHeight = screenHeight;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public void setScreenWidth(int screenWidth) {
